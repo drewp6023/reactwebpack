@@ -10,4 +10,3 @@ var Testing = require('./Testing');
 var HelloMessage = require('./HelloMessage');
 
 ReactDOM.render(<HelloMessage name="Drew" />, document.getElementById('hello'));
-ReactDOM.render(<Testing />, document.getElementById('testing'));

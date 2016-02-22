@@ -37,7 +37,7 @@
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 118);
+/******/ 	return __webpack_require__(__webpack_require__.s = 117);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -13489,33 +13489,11 @@
 
 	'use strict';
 
-	var React = __webpack_require__(5);
-
-	var Testing = React.createClass({
-	    displayName: 'Testing',
-
-	    render: function render() {
-	        return React.createElement(
-	            'div',
-	            null,
-	            'This is just a test'
-	        );
-	    }
-	});
-
-	module.e = Testing;
-
-/***/ },
-/* 116 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
 	module.e = __webpack_require__(86);
 
 
 /***/ },
-/* 117 */
+/* 116 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* components */
@@ -13656,24 +13634,45 @@
 	exports.createMemoryHistory = _createMemoryHistory3['default'];
 
 /***/ },
-/* 118 */
+/* 117 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	// Dependencies
 	var React = __webpack_require__(5);
-	var ReactDOM = __webpack_require__(116);
-	var ReactRouter = __webpack_require__(117);
+	var ReactDOM = __webpack_require__(115);
+	var ReactRouter = __webpack_require__(116);
 	var Router = ReactRouter.Router;
 	var Route = ReactRouter.Route;
 
 	// Components
-	var Testing = __webpack_require__(115);
+	var Testing = __webpack_require__(118);
 	var HelloMessage = __webpack_require__(114);
 
 	ReactDOM.render(React.createElement(HelloMessage, { name: 'Drew' }), document.getElementById('hello'));
-	ReactDOM.render(React.createElement(Testing, null), document.getElementById('testing'));
+
+/***/ },
+/* 118 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(5);
+
+	var Testing = React.createClass({
+	    displayName: 'Testing',
+
+	    render: function render() {
+	        return React.createElement(
+	            'div',
+	            null,
+	            'This is just a test'
+	        );
+	    }
+	});
+
+	module.e = Testing;
 
 /***/ },
 /* 119 */

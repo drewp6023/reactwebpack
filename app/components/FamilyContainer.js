@@ -12,9 +12,11 @@ var FamilyContainer = React.createClass({
 		}
 	},
 	addFamilyMember: function(familyMember) {
-		this.setState({
-			familyMembers: this.state.familyMembers.concat([familyMember])
-		});
+		if (typeof familyMember == 'string' && familyMember !== '') {
+			this.setState({
+				familyMembers: this.state.familyMembers.concat([familyMember])
+			});			
+		}
 	},
 	render: function() {
 		return (

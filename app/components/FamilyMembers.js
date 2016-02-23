@@ -6,8 +6,10 @@ var FamilyMembers = React.createClass({
 			newFamilyMember: ''
 		}
 	},
-	updateFamilyMember: function(e) {
-		console.log(e);
+	updateFamilyMember: function(event) {
+		this.setState({
+			newFamilyMember: event.target.value
+		});
 	},
 	handleNewFamilyMember: function() {
 		this.props.addNew(this.state.newFamilyMember);

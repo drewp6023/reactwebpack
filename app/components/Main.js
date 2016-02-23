@@ -6,7 +6,6 @@ var Router = ReactRouter.Router;
 var Route = ReactRouter.Route;
 
 // Components
-var Testing = require('./Testing');
-var HelloMessage = require('./HelloMessage');
+var FamilyContainer = require('./FamilyContainer');
 
-ReactDOM.render(<HelloMessage name="Drew" />, document.getElementById('hello'));
+ReactDOM.render(<FamilyContainer />, document.getElementById('family-container'));

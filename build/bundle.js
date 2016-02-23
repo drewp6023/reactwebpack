@@ -13468,20 +13468,41 @@
 
 	var React = __webpack_require__(5);
 
-	var HelloMessage = React.createClass({
-	    displayName: 'HelloMessage',
+	// Components
+	var FamilyMembers = __webpack_require__(218);
+	var ShowList = __webpack_require__(118);
 
-	    render: function render() {
-	        return React.createElement(
-	            'div',
-	            null,
-	            'Hello ',
-	            this.props.name
-	        );
-	    }
+	var FamilyContainer = React.createClass({
+		displayName: 'FamilyContainer',
+
+		getInitialState: function getInitialState() {
+			return {
+				name: 'Drew Pickering',
+				familyMembers: ['Marc', 'Duane', 'Mary']
+			};
+		},
+		addFamilyMember: function addFamilyMember(familyMember) {
+			this.setState({
+				familyMembers: this.state.familyMembers.concat([familyMember])
+			});
+		},
+		render: function render() {
+			return React.createElement(
+				'div',
+				null,
+				React.createElement(
+					'h3',
+					null,
+					this.state.name,
+					' Family'
+				),
+				React.createElement(FamilyMembers, { addNew: this.addFamilyMember }),
+				React.createElement(ShowList, { names: this.state.familyMembers })
+			);
+		}
 	});
 
-	module.e = HelloMessage;
+	module.e = FamilyContainer;
 
 /***/ },
 /* 115 */
@@ -13647,10 +13668,9 @@
 	var Route = ReactRouter.Route;
 
 	// Components
-	var Testing = __webpack_require__(118);
-	var HelloMessage = __webpack_require__(114);
+	var FamilyContainer = __webpack_require__(114);
 
-	ReactDOM.render(React.createElement(HelloMessage, { name: 'Drew' }), document.getElementById('hello'));
+	ReactDOM.render(React.createElement(FamilyContainer, null), document.getElementById('family-container'));
 
 /***/ },
 /* 118 */
@@ -13660,19 +13680,36 @@
 
 	var React = __webpack_require__(5);
 
-	var Testing = React.createClass({
-	    displayName: 'Testing',
+	var ShowList = React.createClass({
+		displayName: 'ShowList',
 
-	    render: function render() {
-	        return React.createElement(
-	            'div',
-	            null,
-	            'This is just a test'
-	        );
-	    }
+		render: function render() {
+			var listItems = this.props.names.map(function (name) {
+				return React.createElement(
+					'li',
+					null,
+					name
+				);
+			});
+
+			return React.createElement(
+				'div',
+				null,
+				React.createElement(
+					'h3',
+					null,
+					'Family Members'
+				),
+				React.createElement(
+					'ul',
+					null,
+					listItems
+				)
+			);
+		}
 	});
 
-	module.e = Testing;
+	module.e = ShowList;
 
 /***/ },
 /* 119 */
@@ -24729,6 +24766,47 @@
 		});
 	};
 
+
+/***/ },
+/* 218 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(5);
+
+	var FamilyMembers = React.createClass({
+		displayName: 'FamilyMembers',
+
+		getInitialState: function getInitialState() {
+			return {
+				newFamilyMember: ''
+			};
+		},
+		updateFamilyMember: function updateFamilyMember(e) {
+			console.log(e);
+		},
+		handleNewFamilyMember: function handleNewFamilyMember() {
+			this.props.addNew(this.state.newFamilyMember);
+			this.setState({
+				newFamilyMember: ''
+			});
+		},
+		render: function render() {
+			return React.createElement(
+				'div',
+				null,
+				React.createElement('input', { type: 'text', value: this.state.newFamilyMember, onChange: this.updateFamilyMember }),
+				React.createElement(
+					'button',
+					{ onClick: this.handleNewFamilyMember },
+					' Add Family Member '
+				)
+			);
+		}
+	});
+
+	module.e = FamilyMembers;
 
 /***/ }
 /******/ ]);

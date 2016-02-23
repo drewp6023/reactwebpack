@@ -20,6 +20,7 @@
     "css-loader": "^0.23.1",
     "moment": "^2.11.2",
     "react-router": "^2.0.0",
+    "strip-loader": "^0.1.2",
     "style-loader": "^0.13.0",
     "underscore": "^1.8.3",
     "webpack": "^2.1.0-beta.2"

@@ -4,6 +4,8 @@ var React = require('react');
 var FamilyMembers = require('./FamilyMembers');
 var ShowList = require('./ShowList');
 
+console.log("Hello");
+
 var FamilyContainer = React.createClass({
 	getInitialState: function() {
 		return {

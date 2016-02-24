@@ -20,8 +20,8 @@ module.exports = {
                 presets: ['react', 'es2015']
             }
           },
-          { test: /\.css$/, loader: "style!css" },
-          // { test: /\.jsx?$/, loader: "strip-loader?strip[]=console.log" }
+          { test: /\.css$/, loader: "style-loader!css-loader" },
+          // { test: /\.jsx?$/, loader: "strip-loader?strip[]=console.log" }, // This loader strips code out - use for production build
         ]
     },
 };

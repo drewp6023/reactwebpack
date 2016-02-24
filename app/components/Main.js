@@ -5,7 +5,19 @@ var ReactRouter = require('react-router');
 var Router = ReactRouter.Router;
 var Route = ReactRouter.Route;
 
-// Components
-var FamilyContainer = require('./FamilyContainer');
+// Style sheets
+require('../css/custom.css');
 
-ReactDOM.render(<FamilyContainer />, document.getElementById('family-container'));
+// Component Registry
+var Navbar = require('./Navbar');
+
+var App = React.createClass({
+    render: function() {
+        return (
+            <Navbar />
+        )
+    }
+});
+
+// Components
+ReactDOM.render(<App />, document.getElementById('app-container'));

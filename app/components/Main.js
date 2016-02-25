@@ -9,15 +9,21 @@ var Route = ReactRouter.Route;
 require('../css/custom.css');
 
 // Component Registry
-var Navbar = require('./Navbar');
+var AboutMeSection = require('./AboutMeSection');
+var SkillsSection = require('./SkillsSection');
+var Footer = require('./Footer');
 
 var App = React.createClass({
     render: function() {
-        return (
-            <Navbar />
-        )
+    	return (
+    		<div>
+	    		<AboutMeSection />
+	    		<SkillsSection />
+	    		<Footer />
+	    	</div>
+    	)
     }
 });
 
-// Components
+// Rendering
 ReactDOM.render(<App />, document.getElementById('app-container'));

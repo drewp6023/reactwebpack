@@ -13,42 +13,47 @@ var Counter = require('./Counter');
 
 // Models
 var PeopleModel = require('../models/PeopleModel');
+var moment = require('moment');
+var _ = require('underscore');
 
 var App = React.createClass({
+    mixins: [ReactFireMixin],
 	getInitialState () {
 		return {
-			count: 0,
-			text: "I'm a counter"
+			input: '',
+            people: [],
+
 		}
 	},
 	componentWillMount () {
-		this.firebaseRef = new Firebase("https://blazing-dtp.firebaseio.com");
-		this.firebaseRef.on('child_added', function(dataSnapshot) {
-			console.log(dataSnapshot, dataSnapshot.val());
-		}.bind(this));
-	},
-	handleClick (event) {
-		event.preventDefault();
-		this.setState({
-			count: (this.state.count + 1)
-		});
-	},
-	clearCounter () {
-		this.setState({
-			count: 0
-		});
+		var peopleRef = new Firebase("https://blazing-dtp.firebaseio.com/people");
+        this.bindAsArray(peopleRef, "people");
+    },
+    handleChange (event) {
+        this.setState({
+            input: event.target.value
+        })
+    },
+    addPerson (event) {
+        event.preventDefault();
+
+        // this.firebaseRefs['people'].push({
+        //     ID: parseInt(_.uniqueId()),
+        //     name: 'Drew',
+        //     birthday: moment(new Date('1986/10/03')).format('LL'),
+        //     age: moment().diff(new Date('1986/10/03'), 'years')
+        // });
 	},
     render () {
     	return (
     		<div className="container" style={{'padding': '25px'}}>
     			<div className="row">
     				<div className="col-md-6">
-    					<button className="btn btn-primary btn-lg" onClick={this.handleClick}>Initialize</button>
-    					<br /><br />
-    					<button className="btn btn-danger btn-lg" onClick={this.clearCounter}>Clear</button>
+                        <input type="text" className="form-control" value={this.state.input} defaultValue="Add a person..." onChange={this.handleChange} />
+    					<button className="btn btn-primary btn-lg" onClick={this.addPerson}>Add</button>
     				</div>
     				<div className="col-md-6">
-    					<Counter updateCount={this.state.count} />
+    					<PeopleList  />
     				</div>
     			</div>
 	    	</div>

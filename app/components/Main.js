@@ -9,6 +9,7 @@ var Route = ReactRouter.Route;
 require('../css/custom.css');
 
 // Component Registry
+var Counter = require('./Counter');
 
 // Models
 var PeopleModel = require('../models/PeopleModel');
@@ -47,11 +48,7 @@ var App = React.createClass({
     					<button className="btn btn-danger btn-lg" onClick={this.clearCounter}>Clear</button>
     				</div>
     				<div className="col-md-6">
-    					<div className="panel pandel-default">
-    						<div className="panel-body">
-    							{this.state.count}
-    						</div>
-    					</div>
+    					<Counter updateCount={this.state.count} />
     				</div>
     			</div>
 	    	</div>

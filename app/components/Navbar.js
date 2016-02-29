@@ -1,20 +1,12 @@
 var React = require('react');
 
 var Navbar = React.createClass({
-    getInitialState: function() {
+    getInitialState () {
         return {
             links: ["Home", "About", "Contact"]
         }
     },
-    render: function() {
-        var listItems = this.state.links.map(function(link, index) {
-            if (index == 0) {
-                return <li  key={ index } className="active"><a href="#">{ link }</a></li>;
-            } else {
-                return <li key={ index }><a href="#">{ link }</a></li>;
-            }
-        });
-
+    render () {
         return (
             <nav className="navbar navbar-inverse navbar-fixed-top">
                 <div className="container-fluid">
@@ -28,7 +20,15 @@ var Navbar = React.createClass({
                     </div>
                     <div className="collapse navbar-collapse" id="myNavbar">
                         <ul className="nav navbar-nav">
-                            { listItems }
+                            { 
+                                this.state.links.map(function(link, index) {
+                                    if (index == 0) {
+                                        return <li  key={ index } className="active"><a href="#">{ link }</a></li>;
+                                    } else {
+                                        return <li key={ index }><a href="#">{ link }</a></li>;
+                                    }
+                                }
+                            }
                         </ul>
                     </div>
                 </div>

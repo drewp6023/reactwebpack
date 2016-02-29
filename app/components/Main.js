@@ -9,19 +9,53 @@ var Route = ReactRouter.Route;
 require('../css/custom.css');
 
 // Component Registry
-var AboutMeSection = require('./AboutMeSection');
-var SkillsSection = require('./SkillsSection');
-var Footer = require('./Footer');
+
+// Models
+var PeopleModel = require('../models/PeopleModel');
 
 var App = React.createClass({
-    render: function() {
+	getInitialState () {
+		return {
+			count: 0,
+			text: "I'm a counter"
+		}
+	},
+	componentWillMount () {
+		this.firebaseRef = new Firebase("https://blazing-dtp.firebaseio.com");
+		this.firebaseRef.on('child_added', function(dataSnapshot) {
+			console.log(dataSnapshot, dataSnapshot.val());
+		}.bind(this));
+	},
+	handleClick (event) {
+		event.preventDefault();
+		this.setState({
+			count: (this.state.count + 1)
+		});
+	},
+	clearCounter () {
+		this.setState({
+			count: 0
+		});
+	},
+    render () {
     	return (
-    		<div>
-	    		<AboutMeSection />
-	    		<SkillsSection />
-	    		<Footer />
+    		<div className="container" style={{'padding': '25px'}}>
+    			<div className="row">
+    				<div className="col-md-6">
+    					<button className="btn btn-primary btn-lg" onClick={this.handleClick}>Initialize</button>
+    					<br /><br />
+    					<button className="btn btn-danger btn-lg" onClick={this.clearCounter}>Clear</button>
+    				</div>
+    				<div className="col-md-6">
+    					<div className="panel pandel-default">
+    						<div className="panel-body">
+    							{this.state.count}
+    						</div>
+    					</div>
+    				</div>
+    			</div>
 	    	</div>
-    	)
+    	);
     }
 });
 

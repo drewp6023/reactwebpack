@@ -9,7 +9,7 @@ var Route = ReactRouter.Route;
 require('../css/custom.css');
 
 // Component Registry
-var Counter = require('./Counter');
+var PersonWall = require('./PersonWall');
 
 // Models
 var PeopleModel = require('../models/PeopleModel');
@@ -48,12 +48,17 @@ var App = React.createClass({
     	return (
     		<div className="container" style={{'padding': '25px'}}>
     			<div className="row">
-    				<div className="col-md-6">
+    				<div className="col-md-3">
                         <input type="text" className="form-control" value={this.state.input} defaultValue="Add a person..." onChange={this.handleChange} />
+                        <br />
     					<button className="btn btn-primary btn-lg" onClick={this.addPerson}>Add</button>
     				</div>
-    				<div className="col-md-6">
-    					<PeopleList  />
+    				<div className="col-md-9">
+                        <div className="row">
+                            <div className="col-md-12">
+    					       <PersonWall person={this.state.input} />
+                            </div>
+                        </div>
     				</div>
     			</div>
 	    	</div>

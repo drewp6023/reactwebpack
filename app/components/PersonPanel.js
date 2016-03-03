@@ -6,7 +6,7 @@ var PersonPanel = React.createClass({
 			<div className="person-panel">
 				
 			</div>
-		)
+		);
 	}
 });
 

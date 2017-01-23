@@ -17,6 +17,7 @@ require('./main.css');
 // var moment = require('moment');
 // var _ = require('underscore');
 
+// Main routing
 var Main = React.createClass({
     render () {
     	return (

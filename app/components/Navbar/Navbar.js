@@ -1,43 +1,47 @@
-var React = require('react');
+import React from 'react';
+import { Link, IndexLink } from 'react-router';
+
+// Components
+import Navlink from '../Navlink/Navlink';
 
 // Style sheets
-require('./navbar.css');
+require('./navbar.scss');
 
-var Navbar = React.createClass({
-    getInitialState () {
-        return {
-            links: ["Home", "About", "Contact"]
+export default class Navbar extends React.Component {
+    constructor (props) {
+        super(props);
+
+        this.state = {
+            links: ["Home", "About"]
         }
-    },
+    }
+
     render () {
         return (
             <nav className="navbar navbar-inverse navbar-fixed-top">
                 <div className="container-fluid">
                     <div className="navbar-header">
+                        <span className="logo--nav-compressed">askFitness</span>
                         <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                             <span className="icon-bar"></span>
                             <span className="icon-bar"></span>
                             <span className="icon-bar"></span> 
                         </button>
-                        <a className="navbar-brand" href="">ReactJS</a>
                     </div>
                     <div className="collapse navbar-collapse" id="myNavbar">
                         <ul className="nav navbar-nav">
                             { 
                                 this.state.links.map(function(link, index) {
-                                    if (index == 0) {
-                                        return <li  key={ index } className="active"><a href="#">{ link }</a></li>;
-                                    } else {
-                                        return <li key={ index }><a href="#">{ link }</a></li>;
-                                    }
+                                    return (
+                                        <Navlink key={index} to={ '/' + (link == 'Home' ? '' : link) } name={link} />
+                                    )
                                 })
                             }
                         </ul>
+                        <span className="logo"><IndexLink to="/">askFitness</IndexLink></span>
                     </div>
                 </div>
             </nav>
-        );
+        )
     }
-});
-
-module.exports = Navbar;
+}

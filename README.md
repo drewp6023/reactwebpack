@@ -5,7 +5,6 @@ Includes:
 - ReactJS
 - Webpack
 - Babel
-- Browserify
 
 Instructions
 - npm install

@@ -22,7 +22,7 @@ var Main = React.createClass({
     render () {
     	return (
 			<Router history={hashHistory}>
-				<Route path="/" component={Home}></Route>
+				<IndexRoute component={HomePage}></IndexRoute>
 				<Route path="/about" component={About}></Route>
 			</Router>
     	)

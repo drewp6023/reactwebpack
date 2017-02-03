@@ -1,33 +1,34 @@
 // Dependencies
-var React = require('react');
-var ReactDOM = require('react-dom');
-var Router = require('react-router').Router;
-var Route = require('react-router').Route;
-var IndexRoute = require('react-router').IndexRoute;
-var Link = require('react-router').Link;
-var hashHistory = require('react-router').hashHistory;
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router';
 
 // Components
-var Home = require('../Home/Home');
-var About = require('../About/About');
+import HomePage from '../HomePage/HomePage';
+import DestinationsPage from '../DestinationsPage/DestinationsPage';
+import PageLayout from '../PageLayout/PageLayout';
+
+// Stores
 
 // Style sheets
-require('./main.css');
+import './main.css';
 
-// var moment = require('moment');
-// var _ = require('underscore');
+// const moment = require('moment');
+// const _ = require('underscore');
 
 // Main routing
-var Main = React.createClass({
+export default class Main extends React.Component {
     render () {
     	return (
 			<Router history={hashHistory}>
-				<IndexRoute component={HomePage}></IndexRoute>
-				<Route path="/about" component={About}></Route>
+				<Route path="/" component={PageLayout}>
+					<IndexRoute component={HomePage}></IndexRoute>
+					<Route path="/destinations" component={DestinationsPage}></Route>
+				</Route>
 			</Router>
     	)
     }
-})
+}
 
 // Rendering
 ReactDOM.render(<Main />, document.getElementById('app-container'));

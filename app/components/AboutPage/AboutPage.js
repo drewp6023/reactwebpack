@@ -1,23 +1,20 @@
 // Dependencies
-var React = require('react');
+import React from 'react';
 
 // Components
 
 // Style sheets
-require('./about.css');
+require('./aboutpage.css');
 
 // var moment = require('moment');
 // var _ = require('underscore');
 
-var About = React.createClass({
+export default class AboutPage extends React.Component {
     render () {
     	return (
     		<div>
-    			<h1>About</h1>
+    			<h1>About Page</h1>
     		</div>
     	)
     }
-})
-
-// Rendering
-module.exports = About;
+}
